@@ -1,36 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {useState} from 'react';
+import styled from 'styled-components';
+import Button from './components/button';
 
-function App() {
-  const [count, setCount] = useState(0)
+const Container = styled.div`
+    text-align: center;
+`;
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Semibreves</h1>
-      <h3>Música Tradicional Portuguesa</h3>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+const Heading = styled.h1`
+    margin-bottom: 200px;
+`;
+
+const Subheading = styled.h3`
+    font-size: 1.5rem;
+`;
+
+const FlexContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px;
+`
+
+const App = () => {
+    const [count, setCount] = useState(5);
+
+    return (
+        <Container>
+            <Heading>Semibreves</Heading>
+            <Subheading>Música Tradicional Portuguesa</Subheading>
+
+            <FlexContainer>
+                <Button onClick={() => setCount((prevCount) => prevCount + 1)}>
+                    count is {count}
+                </Button>
+
+                <Button variant={'primary'} onClick={() => setCount((prevCount) => prevCount + 1)}>
+                    Música
+                </Button>
+
+                <Button variant={'primary'} onClick={() => setCount((prevCount) => prevCount + 1)}>
+                    História
+                </Button>
+
+                <Button variant={'primary'} onClick={() => setCount((prevCount) => prevCount + 1)}>
+                    Sobre Nós
+                </Button>
+
+
+            </FlexContainer>
+        </Container>
+    );
 }
 
-export default App
+export default App;
